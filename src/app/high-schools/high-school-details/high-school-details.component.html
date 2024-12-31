@@ -1,0 +1,19 @@
+<div *ngIf="loading" class="spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+  
+  <div *ngIf="!loading && satScore; else noData" class="detail-container">
+    <div *ngIf="satScore">
+        <h2>SAT Scores for {{ satScore.school_name }}</h2>
+        <p><strong>Math:</strong> {{ satScore.sat_math_avg_score }}</p>
+        <p><strong>Critical Reading:</strong> {{ satScore.sat_critical_reading_avg_score }}</p>
+        <p><strong>Writing:</strong> {{ satScore.sat_writing_avg_score }}</p>
+      </div>
+      <mat-spinner *ngIf="!satScore"></mat-spinner>
+      
+  </div>
+  
+  <ng-template #noData>
+    <p>No SAT scores available for this school.</p>
+  </ng-template>
+  

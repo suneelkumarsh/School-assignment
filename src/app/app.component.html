@@ -1,0 +1,20 @@
+<div *ngIf="loading" class="spinner-container">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!loading && highSchools.length > 0; else noData">
+  <div class="app-container">
+    <app-high-school-list (schoolSelected)="handleSchoolSelected($event)"></app-high-school-list>
+
+  
+    <div *ngIf="selectedSchoolDbn">
+      <app-high-school-detail [schoolDbn]="selectedSchoolDbn"></app-high-school-detail>
+    </div>
+  </div>
+</div>
+
+<ng-template #noData>
+  <p>No high schools found.</p>
+</ng-template>
+
+<router-outlet></router-outlet>
